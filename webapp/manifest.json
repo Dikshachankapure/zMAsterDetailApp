@@ -1,0 +1,174 @@
+{
+	"_version": "1.12.0",
+	"sap.app": {
+		"id": "demo.ZMasterDetailApp",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"sourceTemplate": {
+			"id": "servicecatalog.connectivityComponentForManifest",
+			"version": "0.0.0"
+		},
+		"dataSources": {
+			"Northwind.svc": {
+				"uri": "/V2/Northwind/Northwind.svc/V2/Northwind/Northwind.svc/",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/metadata.xml"
+				}
+			}
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+	"sap.ui5": {
+		"flexEnabled": false,
+		"rootView": {
+			"viewName": "demo.ZMasterDetailApp.view.App",
+			"type": "XML",
+			"async": true,
+			"id": "idApp"
+		},
+		"dependencies": {
+			"minUI5Version": "1.65.6",
+			"libs": {
+				"sap.ui.layout": {},
+				"sap.ui.core": {},
+				"sap.m": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "demo.ZMasterDetailApp.i18n.i18n"
+				}
+			},
+			"DemoData": {
+				"type": "sap.ui.model.json.JSONModel",
+				"settings": {},
+				"uri": "jsondata/demo.json"
+			},
+				"PlantSet": {
+				"type": "sap.ui.model.json.JSONModel",
+				"settings": {},
+				"uri": "jsondata/plantName.json",
+				"preload": false
+			},
+			"WorkcenterDataSet": {
+				"type": "sap.ui.model.json.JSONModel",
+				"settings": {},
+				"uri": "jsondata/workcenter.json",
+				"preload": false
+			},
+				"MachineDataSet": {
+				"type": "sap.ui.model.json.JSONModel",
+				"settings": {},
+				"uri": "jsondata/machineNm.json",
+				"preload": false
+			},
+			"": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "Northwind.svc",
+				"preload": true
+			}
+		},
+		"resources": {
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"async": true,
+				"viewPath": "demo.ZMasterDetailApp.view",
+				"controlAggregation": "pages",
+				"controlId": "idApp",
+				"clearControlAggregation": false
+			},
+			"routes": [
+				{
+					"pattern": "",
+					"name": "FirstPage",
+					"target": [
+						"mPage",
+						"dPage"
+					]
+				},
+				{
+					"pattern": "toDetail/{RequestNo}",
+					"name": "detail",
+					"target": [
+						"mPage",
+						"dPage"
+					]
+				},
+				{
+					"pattern": "detaildetail/{RequestNo}",
+					"name": "detaildetail",
+					"target": [
+						"mPage",
+						"DPage"
+					]
+				},
+				{
+					"pattern": "DetailDetail",
+					"name": "DetailDetail",
+					"target": [
+						"mPage",
+						"DPage"
+					]
+				}
+			],
+			"targets": {
+				"mPage": {
+					"viewName": "Master",
+					"controlAggregation": "masterPages"
+				},
+				"dPage": {
+					"viewName": "Detail",
+					"controlAggregation": "detailPages"
+				},
+				"detail": {
+					"viewType": "XML",
+					"viewName": "Detail"
+				},
+					"DPage": {
+					"viewName": "DetailDetail",
+					"controlAggregation": "detailPages"
+				}
+			}
+		}
+	}
+}

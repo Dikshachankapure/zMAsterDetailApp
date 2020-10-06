@@ -1,0 +1,13 @@
+{
+	"MachineNMData": [{
+	
+		"MachineName": "Machine 1"
+        
+    },{
+    	"MachineName": "Machine 2"
+        
+    },{
+    	"MachineName" : "Machine 3"
+    }]
+    
+ }

@@ -1,0 +1,70 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="demo.ZMasterDetailApp.controller.DetailDetail"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+	<App>
+		<pages>
+			<Page title="Detail Detail" showNavButton="true" navButtonPress="OnNavBack">
+				<content>
+					<VBox class="sapUiSmallMargin">
+						<f:SimpleForm id="SimpleFormChange354" editable="true" layout="ResponsiveGridLayout" title="Add Request" labelSpanXL="3" labelSpanL="3"
+							labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1"
+							columnsL="1" columnsM="1" singleContainerFullSize="false">
+							<f:content>
+								<Input id="txtReqNo"  value="0"  visible="false" />
+								<Label text="Plant Name" required="true"/>
+								<!--<Input id="txtpltnm" type="Text"/>-->
+								<Input type="Text" id="txtpltnm" valueHelpRequest="_handleValueHelpPlantData" suggestionItems="{/PlantData}" textFormatMode="Key"
+									showSuggestion="true" showValueHelp="true">
+									<suggestionItems>
+										<core:Item text="{PlantName}" key="{PlantName}"/>
+									</suggestionItems>
+								</Input>
+								<Label text="Machine Name" required="true"/>
+								<!--<Input id="txtmchnm" type="Text"/>-->
+								<Input type="Text" id="txtmchnm" valueHelpRequest="_handleValueHelpMachineData" suggestionItems="{/PlantData}" textFormatMode="Key"
+									showSuggestion="true" showValueHelp="true">
+									<suggestionItems>
+										<core:Item text="{MachineName}" key="{MachineName}"/>
+									</suggestionItems>
+								</Input>
+								<Label text="Workcenter" required="true"/>
+								<!--<Input id="txtwrkcnt" type="Text" maxLength="12"/>-->
+								<Input type="Text" id="txtwrkcnt" valueHelpRequest="_handleValueHelpWorkcenter" suggestionItems="{/workcenterData}" textFormatMode="Key"
+									showSuggestion="true" showValueHelp="true">
+									<suggestionItems>
+										<core:Item text="{Workcenter}" key="{Workcenter}"/>
+									</suggestionItems>
+								</Input>
+								<Label text="Priority" required="true"/>
+								<ComboBox id="txtPri" change="OnSelect" selectedKey="0">
+									<items>
+										<core:Item text="Select" key="0"/>
+										<core:Item text="High" key="High"/>
+										<core:Item text="Medium" key="Medium"/>
+										<core:Item text="Low" key="Low"/>
+									</items>
+								</ComboBox>
+								<Label text="Date" labelFor="DP2"/>
+								<DatePicker id="DP2" placeholder="Enter Date ..." change="handleChange" class="sapUiSmallMarginBottom"/>
+								<!--<DatePicker id="DP2" valueFormat="MM-dd-yyyy" displayFormat="long" change="handleChange" class="sapUiSmallMarginBottom"/>
+-->
+								<Label text="Request Reason" required="true"/>
+								<Input id="txtReqrsn"/>
+								<Label text="Assign To" required="true"/>
+								<Input id="txtAssngto" type="Text"/>
+							</f:content>
+						</f:SimpleForm>
+					</VBox>
+				</content>
+				<footer>
+					<Bar>
+						<contentRight>
+							<Button text="Save" icon="sap-icon://save" press="OnSave" type="Emphasized"/>
+							<Button text="Close" icon="sap-icon://decline" press="OnClose" type="Emphasized"/>
+							<Button icon="sap-icon://reset" press="OnReset" type="Emphasized"/>
+						</contentRight>
+					</Bar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
